@@ -10,6 +10,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.42.1
   '@unocss/preset-icons': ^0.46.4
   '@vanilla-extract/css': ^1.9.1
+  '@vanilla-extract/dynamic': ^2.0.2
   '@vanilla-extract/recipes': ^0.2.5
   '@vanilla-extract/sprinkles': ^1.5.0
   '@vanilla-extract/vite-plugin': ^3.6.1
@@ -35,10 +36,11 @@ dependencies:
   '@dessert-box/react': 0.4.0_react@18.2.0
   '@unocss/preset-icons': 0.46.4
   '@vanilla-extract/css': 1.9.1
+  '@vanilla-extract/dynamic': 2.0.2
   '@vanilla-extract/recipes': 0.2.5_@vanilla-extract+css@1.9.1
   '@vanilla-extract/sprinkles': 1.5.0_@vanilla-extract+css@1.9.1
   pastable: 2.0.10_react@18.2.0
-  rainbow-sprinkles: 0.14.3_@vanilla-extract+css@1.9.1
+  rainbow-sprinkles: 0.14.3_lqanh3ujdrfvgn4wv6wz333axm
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0
@@ -1072,6 +1074,12 @@ packages:
       deepmerge: 4.2.2
       media-query-parser: 2.0.2
       outdent: 0.8.0
+
+  /@vanilla-extract/dynamic/2.0.2:
+    resolution: {integrity: sha512-U4nKaEQ8Kuz+exXEr51DUpyaOuzo24/S/k1YbDPQR06cYcNjQqvwFRnwWtZ+9ImocqM1wTKtzrdUgSTtLGIwAg==}
+    dependencies:
+      '@vanilla-extract/private': 1.0.3
+    dev: false
 
   /@vanilla-extract/integration/6.0.0:
     resolution: {integrity: sha512-uBz4QAhKYswyhN3LYd4duuN3uq7WT1jKckd0sP2+Y8gL+6UXdhN9QOUvNBfvofkrYYWqS8efH4hnsGyyWW8f+w==}
@@ -4267,13 +4275,14 @@ packages:
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  /rainbow-sprinkles/0.14.3_@vanilla-extract+css@1.9.1:
+  /rainbow-sprinkles/0.14.3_lqanh3ujdrfvgn4wv6wz333axm:
     resolution: {integrity: sha512-l8V+L0jDcepNykmt9M3uLraq7YF6jGrSD4/QZJVJaQcYSlxWhpIuLEE0Vn0YcVQ/WU4CfoZzXQJqAlbAwc3n2A==}
     peerDependencies:
       '@vanilla-extract/css': ^1
       '@vanilla-extract/dynamic': ^2
     dependencies:
       '@vanilla-extract/css': 1.9.1
+      '@vanilla-extract/dynamic': 2.0.2
     dev: false
 
   /react-dom/18.2.0_react@18.2.0:

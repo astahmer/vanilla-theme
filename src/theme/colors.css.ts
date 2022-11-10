@@ -1,4 +1,6 @@
-import { defineProperties } from "@vanilla-extract/sprinkles";
+// import { defineProperties } from "@vanilla-extract/sprinkles";
+import { defineProperties } from "rainbow-sprinkles";
+
 import type { NonUndefined } from "pastable";
 import type tb from "ts-toolbelt";
 import { theme } from "./vars";
@@ -15,7 +17,7 @@ export const colorStyles = defineProperties({
         hover: { selector: "&:hover" },
     },
     defaultCondition: "default",
-    properties: {
+    staticProperties: {
         color: flatColors,
         background: flatColors,
         backgroundColor: flatColors,

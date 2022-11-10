@@ -1,4 +1,6 @@
-import { defineProperties } from "@vanilla-extract/sprinkles";
+// import { defineProperties } from "@vanilla-extract/sprinkles";
+import { defineProperties } from "rainbow-sprinkles";
+
 import { theme } from "./vars";
 
 export const space = theme.space as Record<keyof typeof theme.space | `${keyof typeof theme.space}`, string>;
@@ -6,7 +8,7 @@ export const space = theme.space as Record<keyof typeof theme.space | `${keyof t
 export type Space = keyof typeof space;
 
 export const spacingStyles = defineProperties({
-    properties: {
+    staticProperties: {
         gap: space,
         rowGap: space,
         columnGap: space,
@@ -24,14 +26,14 @@ export const spacingStyles = defineProperties({
         marginRight: space,
         marginInlineStart: space,
         marginInlineEnd: space,
-        border: theme.borders,
-        borderWidth: theme.borders,
-        borderTop: theme.borders,
-        borderBottom: theme.borders,
-        borderLeft: theme.borders,
-        borderRight: theme.borders,
-        borderRadius: theme.radii,
-        outline: theme.borders,
+        // border: theme.borders,
+        // borderWidth: theme.borders,
+        // borderTop: theme.borders,
+        // borderBottom: theme.borders,
+        // borderLeft: theme.borders,
+        // borderRight: theme.borders,
+        // borderRadius: theme.radii,
+        // outline: theme.borders,
     },
     shorthands: {
         m: ["margin"],
@@ -56,10 +58,10 @@ export const spacingStyles = defineProperties({
         ps: ["paddingInlineStart"],
         pe: ["paddingInlineEnd"],
         py: ["paddingTop", "paddingBottom"],
-        bw: ["borderWidth"],
-        bx: ["borderLeft", "borderRight"],
-        borderX: ["borderLeft", "borderRight"],
-        by: ["borderTop", "borderBottom"],
-        borderY: ["borderTop", "borderBottom"],
+        // bw: ["borderWidth"],
+        // bx: ["borderLeft", "borderRight"],
+        // borderX: ["borderLeft", "borderRight"],
+        // by: ["borderTop", "borderBottom"],
+        // borderY: ["borderTop", "borderBottom"],
     },
 });

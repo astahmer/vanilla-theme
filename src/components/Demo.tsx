@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { DessertBox } from "../theme/DessertBox";
+// import { DessertBox } from "../theme/DessertBox";
+import { RainbowBox } from "../theme/RainbowBox";
 
 import { Show } from "./Show";
 
@@ -19,7 +20,7 @@ export const Demo = () => {
                             {() => obj!.text}
                         </Show>
                     </div>
-                    <DessertBox>box</DessertBox>
+                    <RainbowBox>{"aaa" as any}</RainbowBox>
                 </div>
             </div>
         </div>

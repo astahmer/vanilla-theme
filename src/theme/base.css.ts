@@ -1,11 +1,13 @@
-import { defineProperties } from "@vanilla-extract/sprinkles";
+// import { defineProperties } from "@vanilla-extract/sprinkles";
+import { defineProperties } from "rainbow-sprinkles";
+
 import { flatColors } from "./colors.css";
 import { space } from "./spacing.css";
 import { theme } from "./vars";
 
-const absPos = ["auto", 0, "0", "-50%", "0%", "50%", "100%"] as const;
-const size = ["auto", "0", "0%", "25%", "50%", "75%", "100%", "100vh", "100vw"] as const;
-const flexAlign = ["stretch", "flex-start", "center", "flex-end", "space-around", "space-between"] as const;
+// const absPos = ["auto", 0, "0", "-50%", "0%", "50%", "100%"] as const;
+// const size = ["auto", "0", "0%", "25%", "50%", "75%", "100%", "100vh", "100vw"] as const;
+// const flexAlign = ["stretch", "flex-start", "center", "flex-end", "space-around", "space-between"] as const;
 
 const screens = {
     mobile: { max: "599px" },
@@ -42,52 +44,56 @@ const twBreakpointsToAppBreakpoints = (breakpointsMap: TwResponsiveBreakpointsMa
         ])
     ) as Record<TwResponsiveBreakpoints, Condition>;
 
-const overflow = ["auto", "hidden", "scroll", "visible"] as const;
+// const overflow = ["auto", "hidden", "scroll", "visible"] as const;
 export const responsiveProperties = defineProperties({
     conditions: { ...twBreakpointsToAppBreakpoints(screens), default: {} },
     defaultCondition: "default",
     // defaultCondition: "medium-desktop",
-    responsiveArray: ["mobile", "tablet", "small-desktop", "medium-desktop"],
-    properties: {
-        fontFamily: theme.typography.fonts,
-        fontSize: theme.typography.fontSizes,
-        fontWeight: theme.typography.fontWeights,
-        lineHeight: theme.typography.lineHeights,
-        letterSpacing: theme.typography.letterSpacings,
-        textAlign: ["inherit", "left", "center", "right"],
+    // responsiveArray: ["mobile", "tablet", "small-desktop", "medium-desktop"],
+    staticProperties: {
+        textAlign: ["left", "center", "right"],
         fontStyle: ["normal", "italic"],
-        textTransform: ["inherit", "uppercase", "lowercase", "capitalize", "none"],
+        textTransform: ["uppercase", "lowercase", "capitalize", "none"],
         textDecoration: ["none", "underline", "line-through", "underline"],
         //
         position: ["absolute", "relative", "fixed", "sticky"],
         display: ["none", "flex", "inline-flex", "block", "inline"],
         flexDirection: ["row", "column", "row-reverse"],
-        flexShrink: [0, 1] as const,
-        flexGrow: [0, 1] as const,
-        flex: [0, 1] as const,
-        flexWrap: ["wrap", "nowrap", "revert", "wrap-reverse"],
-        justifyContent: flexAlign,
-        justifySelf: flexAlign,
-        alignItems: flexAlign,
-        alignSelf: flexAlign,
-        top: absPos,
-        bottom: absPos,
-        left: absPos,
-        right: absPos,
-        inset: absPos,
         //
-        width: size,
-        minWidth: size,
-        maxWidth: size,
-        height: size,
-        minHeight: size,
-        maxHeight: size,
-        whiteSpace: ["nowrap", "unset"],
-        overflow: overflow,
-        overflowX: overflow,
-        overflowY: overflow,
-        visibility: ["unset", "hidden", "visible"],
+        flexWrap: ["wrap", "nowrap", "wrap-reverse"],
+        visibility: ["hidden", "visible"],
         verticalAlign: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"],
+        whiteSpace: ["nowrap"],
+    },
+    dynamicProperties: {
+        fontFamily: theme.typography.fonts,
+        fontSize: theme.typography.fontSizes,
+        // fontWeight: theme.typography.fontWeights,
+        // lineHeight: theme.typography.lineHeights,
+        letterSpacing: theme.typography.letterSpacings,
+        justifyContent: true,
+        justifySelf: true,
+        alignItems: true,
+        alignSelf: true,
+        top: true,
+        bottom: true,
+        left: true,
+        right: true,
+        inset: true,
+        //
+        width: true,
+        minWidth: true,
+        maxWidth: true,
+        height: true,
+        minHeight: true,
+        maxHeight: true,
+        flexShrink: true,
+        flexGrow: true,
+        flex: true,
+
+        overflow: true,
+        overflowX: true,
+        overflowY: true,
     },
     // Inspired from https://chakra-ui.com/docs/features/style-props
     shorthands: {
@@ -108,12 +114,12 @@ export const responsiveProperties = defineProperties({
         ta: ["textAlign"],
         tt: ["textTransform"],
         fs: ["fontSize"],
-        fw: ["fontWeight"],
+        // fw: ["fontWeight"],
     },
 });
 
 export const unresponsiveProperties = defineProperties({
-    properties: {
+    staticProperties: {
         zIndex: theme.zIndices,
         transition: ["none", "all 0.1s ease"],
         backgroundSize: ["cover", "contain"],
@@ -225,9 +231,42 @@ export const interactiveProperties = defineProperties({
         _light: { selector: "&[data-theme=light] &,&[data-theme=light]" },
     },
     defaultCondition: "default",
-    properties: {
+    dynamicProperties: {
         boxShadow: theme.shadows,
         textShadow: theme.shadows,
+        //
+        fontFamily: theme.typography.fonts,
+        fontSize: theme.typography.fontSizes,
+        // fontWeight: theme.typography.fontWeights,
+        // lineHeight: theme.typography.lineHeights,
+        letterSpacing: theme.typography.letterSpacings,
+        //
+        justifyContent: true,
+        justifySelf: true,
+        alignItems: true,
+        alignSelf: true,
+        top: true,
+        bottom: true,
+        left: true,
+        right: true,
+        inset: true,
+        // base props
+        width: true,
+        minWidth: true,
+        maxWidth: true,
+        height: true,
+        minHeight: true,
+        maxHeight: true,
+        //
+        overflow: true,
+        overflowX: true,
+        overflowY: true,
+        //
+        flexShrink: true,
+        flexGrow: true,
+        flex: true,
+    },
+    staticProperties: {
         opacity: {
             "0": "0",
             disabled: "var(--vtmn-opacity_disabled-state)",
@@ -237,46 +276,20 @@ export const interactiveProperties = defineProperties({
         },
         cursor: ["inherit", "pointer", "not-allowed", "initial", "wait", "col-resize"],
         pointerEvents: ["inherit", "all", "none"],
-        userSelect: ["inherit", "none", "text", "all"],
-        //
-        fontFamily: theme.typography.fonts,
-        fontSize: theme.typography.fontSizes,
-        fontWeight: theme.typography.fontWeights,
-        lineHeight: theme.typography.lineHeights,
-        letterSpacing: theme.typography.letterSpacings,
-        textAlign: ["inherit", "left", "center", "right"],
+        userSelect: ["none", "text", "all"],
+
+        textAlign: ["left", "center", "right"],
         fontStyle: ["normal", "italic"],
-        textTransform: ["inherit", "uppercase", "lowercase", "capitalize", "none"],
+        textTransform: ["uppercase", "lowercase", "capitalize", "none"],
         textDecoration: ["none", "underline", "line-through", "underline"],
         //
         position: ["absolute", "relative", "fixed", "sticky"],
         display: ["none", "flex", "inline-flex", "block", "inline"],
         flexDirection: ["row", "column", "row-reverse"],
-        flexShrink: [0, 1] as const,
-        flexGrow: [0, 1] as const,
-        flex: [0, 1] as const,
-        flexWrap: ["wrap", "nowrap", "revert", "wrap-reverse"],
-        justifyContent: flexAlign,
-        justifySelf: flexAlign,
-        alignItems: flexAlign,
-        alignSelf: flexAlign,
-        top: absPos,
-        bottom: absPos,
-        left: absPos,
-        right: absPos,
-        inset: absPos,
-        // base props
-        width: size,
-        minWidth: size,
-        maxWidth: size,
-        height: size,
-        minHeight: size,
-        maxHeight: size,
-        whiteSpace: ["nowrap", "unset"],
-        overflow: overflow,
-        overflowX: overflow,
-        overflowY: overflow,
-        visibility: ["unset", "hidden", "visible"],
+        flexWrap: ["wrap", "nowrap", "wrap-reverse"],
+
+        whiteSpace: ["nowrap"],
+        visibility: ["hidden", "visible"],
         verticalAlign: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom"],
         // spacing props
         gap: space,
@@ -296,14 +309,14 @@ export const interactiveProperties = defineProperties({
         marginRight: space,
         marginInlineStart: space,
         marginInlineEnd: space,
-        border: theme.borders,
-        borderWidth: theme.borders,
-        borderTop: theme.borders,
-        borderBottom: theme.borders,
-        borderLeft: theme.borders,
-        borderRight: theme.borders,
-        borderRadius: theme.radii,
-        outline: theme.borders,
+        // border: theme.borders,
+        // borderWidth: theme.borders,
+        // borderTop: theme.borders,
+        // borderBottom: theme.borders,
+        // borderLeft: theme.borders,
+        // borderRight: theme.borders,
+        // borderRadius: theme.radii,
+        // outline: theme.borders,
         // colors props
         color: flatColors,
         background: flatColors,
@@ -334,7 +347,7 @@ export const interactiveProperties = defineProperties({
         ta: ["textAlign"],
         tt: ["textTransform"],
         fs: ["fontSize"],
-        fw: ["fontWeight"],
+        // fw: ["fontWeight"],
         // spacing props
         m: ["margin"],
         mt: ["marginTop"],
@@ -358,11 +371,11 @@ export const interactiveProperties = defineProperties({
         ps: ["paddingInlineStart"],
         pe: ["paddingInlineEnd"],
         py: ["paddingTop", "paddingBottom"],
-        bw: ["borderWidth"],
-        bx: ["borderLeft", "borderRight"],
-        borderX: ["borderLeft", "borderRight"],
-        by: ["borderTop", "borderBottom"],
-        borderY: ["borderTop", "borderBottom"],
+        // bw: ["borderWidth"],
+        // bx: ["borderLeft", "borderRight"],
+        // borderX: ["borderLeft", "borderRight"],
+        // by: ["borderTop", "borderBottom"],
+        // borderY: ["borderTop", "borderBottom"],
         // colors props
         bg: ["background"],
         bgColor: ["backgroundColor"],
