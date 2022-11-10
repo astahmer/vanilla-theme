@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DessertBox } from "../theme/DessertBox";
 
 import { Show } from "./Show";
 
@@ -18,6 +19,7 @@ export const Demo = () => {
                             {() => obj!.text}
                         </Show>
                     </div>
+                    <DessertBox>box</DessertBox>
                 </div>
             </div>
         </div>

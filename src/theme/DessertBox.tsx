@@ -3,7 +3,6 @@ import type { ComponentProps } from "react";
 
 import { themeSprinkles } from "./sprinkles.css";
 
-export const Box = createBox({ atoms: themeSprinkles });
-console.log(themeSprinkles);
+export const DessertBox = createBox({ atoms: themeSprinkles });
 
-export type BoxProps = ComponentProps<typeof Box>;
+export type BoxProps = ComponentProps<typeof DessertBox>;

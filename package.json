@@ -23,6 +23,7 @@
         "@vanilla-extract/recipes": "^0.2.5",
         "@vanilla-extract/sprinkles": "^1.5.0",
         "pastable": "^2.0.10",
+        "rainbow-sprinkles": "^0.14.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-error-boundary": "^3.1.4",

@@ -4,7 +4,7 @@ import type tb from "ts-toolbelt";
 import { theme } from "./vars";
 
 const colors = theme.colors;
-const flatColors = flatMapColorsWithVariants(colors);
+export const flatColors = flatMapColorsWithVariants(colors);
 
 export const colorStyles = defineProperties({
     conditions: {
@@ -34,7 +34,7 @@ export const colorStyles = defineProperties({
 });
 
 type ChakraThemeColors = typeof colors;
- 
+
 type PossibleThemeColorKey = SimpleColors | PossibleColorWithVariants;
 
 type AppThemeColorMap = {

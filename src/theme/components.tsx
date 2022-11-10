@@ -1,9 +1,9 @@
 import { Children, ReactNode } from "react";
-import type { BoxProps } from "./Box";
-import { Box } from "./Box";
+import type { BoxProps } from "./DessertBox";
+import { DessertBox } from "./DessertBox";
 
-export const Flex = (props: BoxProps) => <Box display="flex" {...props} />;
-export const VFlex = (props: BoxProps) => <Box display="flex" flexDirection="column" {...props} />;
+export const Flex = (props: BoxProps) => <DessertBox display="flex" {...props} />;
+export const VFlex = (props: BoxProps) => <DessertBox display="flex" flexDirection="column" {...props} />;
 
 type StackProps = Omit<BoxProps, "align"> & {
     children: ReactNode;
@@ -15,17 +15,17 @@ export const Stack = ({ children, space = 4, ...props }: StackProps) => {
     const direction = props["flexDirection"] ?? "column";
 
     return (
-        <Box display="flex" flexDirection={direction} {...props}>
+        <DessertBox display="flex" flexDirection={direction} {...props}>
             {stackItems.map((item, index) => (
-                <Box
+                <DessertBox
                     key={index}
                     __pr={direction === "row" ? (index !== stackItems.length - 1 ? space : undefined) : undefined}
                     __pb={direction === "column" ? (index !== stackItems.length - 1 ? space : undefined) : undefined}
                 >
                     {item}
-                </Box>
+                </DessertBox>
             ))}
-        </Box>
+        </DessertBox>
     );
 };
 
