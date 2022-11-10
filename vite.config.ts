@@ -1,19 +1,23 @@
+import presetIcons from "@unocss/preset-icons";
 import react from "@vitejs/plugin-react";
+import UnoCSS from "unocss/vite";
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
 import compress from "vite-plugin-compress";
-
-const env = process.env;
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig((env) => ({
     base: "/",
     root: "./",
     build: { outDir: "./dist", sourcemap: true },
     plugins: [
-        // https://jotai.org/docs/guides/vite
+        UnoCSS({
+            presets: [presetIcons({})],
+        }),
         react(),
-        ...(env?.ENV === "prod" || env?.ENV === "viz" ? [compress()] : []),
+        vanillaExtractPlugin(),
+        ...(env.mode === "viz" ? [compress()] : []),
         checker({ typescript: true, overlay: { initialIsOpen: false, position: "tl" } }),
     ],
     resolve: {
@@ -24,4 +28,4 @@ export default defineConfig({
             },
         ],
     },
-});
+}));
